@@ -5,6 +5,10 @@ YELLOW: #F4D47E
 WHITE: #FEFFFF
 */
 
+/*
+ #242333, #FFFFFF, #01B0D3
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
@@ -14,11 +18,13 @@ WHITE: #FEFFFF
 body{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     background-color: #0241AD;
     font-family: 'Roboto', sans-serif;
+    
 
 }
 
@@ -51,6 +57,7 @@ body .input{
 }
 
 .container{
+    position: absolute;
     background-color: #F4D47E;
     padding: 1rem;
     border-radius: .7rem;
@@ -72,4 +79,8 @@ body .input{
 .incorrect {
     color: red;
     text-decoration: underline;
+}
+
+footer {
+    margin-top: auto;
 }
