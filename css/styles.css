@@ -10,6 +10,7 @@ WHITE: #FEFFFF
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;498;500&display=swap');
 
 * {
     box-sizing: border-box;
@@ -23,13 +24,12 @@ body{
     min-height: 100vh;
     margin: 0;
     background-color: #012946;
-    font-family: 'Roboto', sans-serif;
-    
-
+    font-family: monospace;
 }
 
 body .input{
-    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    display: hidden;
 }
 
 .quote {
