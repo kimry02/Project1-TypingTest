@@ -1,4 +1,6 @@
 
+var wordCount;
+var globalQuote;
 
 
 const quoteElement = document.getElementById('quote');
@@ -7,10 +9,15 @@ const inputElement = document.getElementById('input');
 
 const timerElement = document.getElementById('timer');
 
+function wordCounter(thisQuote){
+    const arr = thisQuote.split(' ')
+
+    return arr.filter(word => word !== '').length;
+}
+
 inputElement.addEventListener('input', () => {
     const arrayQuote = quoteElement.querySelectorAll('span')
     const arrayValue = inputElement.value.split('')
-
     let correct = true;
     arrayQuote.forEach((characterS, index) => {
         const character = arrayValue[index]
@@ -42,13 +49,15 @@ function getQuote() {
 
 async function getNext() {
     const quote = await getQuote()
+    globalQuote = quote;
     quoteElement.innerText = ''
     quote.split('').forEach(character => {
         const characterS = document.createElement('span')
         characterS.innerText = character
         quoteElement.appendChild(characterS)
     })
-    inputElement.value = null;
+    
+    inputElement.value = null
     timer()
 }
 
