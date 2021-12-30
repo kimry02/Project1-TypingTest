@@ -10,21 +10,22 @@ const timerElement = document.getElementById('timer');
 inputElement.addEventListener('input', () => {
     const arrayQuote = quoteElement.querySelectorAll('span')
     const arrayValue = inputElement.value.split('')
+
     let correct = true;
-    arrayQuote.forEach((charSpan, index) => {
+    arrayQuote.forEach((characterS, index) => {
         const character = arrayValue[index]
         if(character == null) {
-            charSpan.classList.remove('correct')
-            charSpan.classList.remove('incorrect')
+            characterS.classList.remove('correct')
+            characterS.classList.remove('incorrect')
             correct = false;
         }
-        else if (character === characterSpan.innerText) {
-            charSpan.classList.add('correct');
-            charSpan.classList.remove('incorrect')
+        else if (character === characterS.innerText) {
+            characterS.classList.add('correct');
+            characterS.classList.remove('incorrect')
         }
         else{
-            charSpan.classList.remove('correct')
-            characterSpan.classList.add('incorrect')
+            characterS.classList.remove('correct')
+            characterS.classList.add('incorrect')
             correct = false;
         }
     })
@@ -41,26 +42,28 @@ function getQuote() {
 
 async function getNext() {
     const quote = await getQuote()
-    quoteElement.innerText = quote
-    quoteElement.split('').forEach(character => {
+    quoteElement.innerText = ''
+    quote.split('').forEach(character => {
         const characterS = document.createElement('span')
         characterS.innerText = character
         quoteElement.appendChild(characterS)
     })
     inputElement.value = null;
+    timer()
 }
 
 let startT
+
 function timer(){
     timerElement.innerText = 0
     startT = new Date()
     setInterval(() => {
-        timer.innerText = getTimerTime()
+        timerElement.innerText = getTimerTime()
     }, 1000)
 }
 
 function getTimerTime() {
-    Math.floor((new Date() - startTime) / 1000)
+    return Math.floor((new Date() - startT) / 1000)
 }
 
 getNext();
