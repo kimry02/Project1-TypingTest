@@ -2,12 +2,22 @@
 var wordCount;
 var globalQuote;
 let timerValue = 0;
+var finished = 0;
+var timeToFinish;
 
 const quoteElement = document.getElementById('quote');
 
 const inputElement = document.getElementById('input');
 
 const timerElement = document.getElementById('timer');
+
+const bodyElement = document.getElementsByTagName('body');
+
+
+document.body.addEventListener('click', () => {
+    inputElement.focus();
+}, true);
+
 
 function wordCounter(thisQuote){
     const arr = thisQuote.split(' ')
@@ -17,6 +27,7 @@ function wordCounter(thisQuote){
 
 inputElement.addEventListener('input', () => {
     if(timerValue == 0){
+        finished = 0;
         timer()
         timerValue = 1
     }
@@ -42,6 +53,7 @@ inputElement.addEventListener('input', () => {
     })
     if(correct) {
         getNext()
+        finished = 1;
         timerValue = 0;
     }
 })
@@ -72,6 +84,9 @@ function timer(){
     timerElement.innerText = 0
     startT = new Date()
     setInterval(() => {
+        if(finished == 1){
+            return;
+        }
         timerElement.innerText = getTimerTime()
     }, 1000)
 }
